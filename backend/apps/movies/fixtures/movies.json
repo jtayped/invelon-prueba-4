@@ -1,0 +1,13 @@
+[
+  {
+    "model": "movies.movie",
+    "pk": 1,
+    "fields": {
+      "title": "Interstellar",
+      "description": "Exploration of space and time.",
+      "duration_min": 169,
+      "rating": "PG-13",
+      "active": true
+    }
+  }
+]
