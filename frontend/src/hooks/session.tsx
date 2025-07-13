@@ -4,12 +4,7 @@ import React, { createContext, useContext, type ReactNode } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { getCurrentUser, getAccessToken, clearTokens } from "@/lib/auth";
-
-interface User {
-  id: number;
-  username: string;
-  email: string;
-}
+import type { User } from "@/types/user";
 
 interface SessionContextProps {
   user: User | null;

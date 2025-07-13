@@ -1,7 +1,18 @@
+import AppHeader from "@/components/header";
+import AppSidebar from "@/components/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import React from "react";
 
 const FunctionalLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div>{children}</div>;
+  return (
+    <SidebarProvider>
+      <AppSidebar />
+      <main>
+        <AppHeader />
+        {children}
+      </main>
+    </SidebarProvider>
+  );
 };
 
 export default FunctionalLayout;
