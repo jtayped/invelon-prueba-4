@@ -51,9 +51,9 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "corsheaders",
-    "apps.movies",
-    "apps.tickets",
-    "apps.user",
+    "movies",
+    "tickets",
+    "users",
 ]
 
 MIDDLEWARE = [

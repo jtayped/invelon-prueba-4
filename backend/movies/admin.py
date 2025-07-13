@@ -1,6 +1,6 @@
 from django.contrib import admin
-from apps.movies.models import Movie, Session
-from apps.tickets.models import Ticket
+from movies.models import Movie, Session
+from tickets.models import Ticket
 
 
 # Register your models here.

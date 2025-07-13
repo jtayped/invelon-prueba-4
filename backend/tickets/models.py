@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.conf import settings
-from apps.movies.models import Session
+from movies.models import Session
 
 
 class Ticket(models.Model):

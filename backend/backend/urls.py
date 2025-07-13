@@ -16,8 +16,8 @@ Including another URLconf
 """
 
 from rest_framework.routers import DefaultRouter
-from apps.movies.views import MovieViewSet, SessionViewSet
-from apps.tickets.views import TicketViewSet
+from movies.views import MovieViewSet, SessionViewSet
+from tickets.views import TicketViewSet
 from django.urls import path, include
 from django.contrib import admin
 
@@ -28,6 +28,6 @@ router.register(r"tickets", TicketViewSet, basename="ticket")
 
 urlpatterns = [
     path("api/", include(router.urls)),
-    path("api/auth/", include("apps.users.urls")),
+    path("api/auth/", include("users.urls")),
     path("admin/", admin.site.urls),
 ]
