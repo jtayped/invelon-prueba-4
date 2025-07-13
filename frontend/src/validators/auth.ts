@@ -19,4 +19,5 @@ export const userDetailResponseSchema = z.object({
   id: z.number(),
   username: z.string(),
   email: z.string().email(),
+  isAdmin: z.boolean(),
 });

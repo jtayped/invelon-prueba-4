@@ -6,15 +6,15 @@ from .models import User
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     model = User
-    list_display = ("email", "is_staff", "is_active")
-    list_filter = ("is_staff", "is_superuser", "is_active")
+    list_display = ("email", "is_admin", "is_active")
+    list_filter = ("is_admin", "is_superuser", "is_active")
     search_fields = ("email", "username")
     ordering = ("email",)
     fieldsets = (
         (None, {"fields": ("email", "password")}),
         (
             "Permissions",
-            {"fields": ("is_staff", "is_active", "groups", "user_permissions")},
+            {"fields": ("is_admin", "is_active", "groups", "user_permissions")},
         ),
     )
     add_fieldsets = (
@@ -22,7 +22,7 @@ class UserAdmin(BaseUserAdmin):
             None,
             {
                 "classes": ("wide",),
-                "fields": ("email", "password1", "password2", "is_staff", "is_active"),
+                "fields": ("email", "password1", "password2", "is_admin", "is_active"),
             },
         ),
     )
