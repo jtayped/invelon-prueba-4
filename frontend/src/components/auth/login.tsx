@@ -26,7 +26,7 @@ import {
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { loginUser } from "@/lib/auth";
 import Link from "next/link";
-import { AxiosError } from "axios";
+import type { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useSession } from "@/hooks/session";
 

@@ -15,7 +15,7 @@ const MyTicketsPageComponent = () => {
     error,
   } = useQuery({ queryKey: ["tickets"], queryFn: () => getTickets() });
 
-  if (!user && !loading) {
+  if (!user && !loading && typeof window !== "undefined") {
     window.location.href = "/login";
     return;
   }
