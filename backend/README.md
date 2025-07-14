@@ -1,17 +1,6 @@
-Here’s a fleshed-out “Setup” section you can drop into your README (or a `docs/SETUP.md`). Adjust any paths or env-var names to match your project:
-
-````markdown
 # Setup
 
-## 1. Clone the repository
-
-```bash
-git clone git@github.com:your-org/your-repo.git
-cd your-repo
-```
-````
-
-## 2. Create & activate a virtual environment
+## 1. Create & activate a virtual environment
 
 ```bash
 python3 -m venv .venv
@@ -21,14 +10,14 @@ source .venv/bin/activate
 .venv\Scripts\Activate.ps1
 ```
 
-## 3. Install Python dependencies
+## 2. Install Python dependencies
 
 ```bash
-pip install --upgrade pip
+cd backend
 pip install -r requirements.txt
 ```
 
-## 4. Configure environment variables
+## 3. Configure environment variables
 
 1. Copy the example env file:
 
@@ -38,13 +27,13 @@ pip install -r requirements.txt
 
 2. Open `.env` and fill in the information
 
-## 5. Apply database migrations
+## 4. Apply database migrations
 
 ```bash
 python manage.py migrate
 ```
 
-## 6. Load initial data fixtures
+## 5. Load initial data fixtures
 
 ```bash
 python manage.py loaddata fixtures/screens.json
@@ -60,18 +49,15 @@ python manage.py loaddata fixtures/sessions.json
 > python manage.py loaddata fixtures/screens.json fixtures/movies.json fixtures/sessions.json
 > ```
 
-## 7. Create an admin user
+## 6. Create an admin user
 
 This will create a user with `is_admin=True`:
 
 ```bash
-python manage.py create_admin_user \
-  --username=admin \
-  --email=admin@example.com \
-  --password=secret123
+python manage.py create_admin_user --username=admin --email=admin@example.com --password=secret123
 ```
 
-## 8. Run the development server
+## 7. Run the development server
 
 ```bash
 python manage.py runserver
