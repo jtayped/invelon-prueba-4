@@ -47,7 +47,7 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
     isLoading: loading,
     refetch,
   } = useQuery({
-    queryKey: ["user"],
+    queryKey: ["me"],
     queryFn: fetchUser,
     enabled: Boolean(getAccessToken()),
     staleTime: 5 * 60 * 1000, // 5m
@@ -60,7 +60,7 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = () => {
     clearTokens();
-    queryClient.setQueryData(["user"], null);
+    queryClient.setQueryData(["me"], null);
     window.location.href = "/login";
   };
 

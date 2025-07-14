@@ -6,6 +6,7 @@ import Link from "next/link";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -14,6 +15,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { useSession } from "@/hooks/session";
+import UserInfo from "./user";
 
 type Item = {
   title: string;
@@ -114,6 +116,9 @@ const AppSidebar = () => {
           );
         })}
       </SidebarContent>
+      <SidebarFooter>
+        <UserInfo />
+      </SidebarFooter>
     </Sidebar>
   );
 };

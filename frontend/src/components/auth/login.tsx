@@ -28,6 +28,7 @@ import { loginUser } from "@/lib/auth";
 import Link from "next/link";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import { useSession } from "@/hooks/session";
 
 const loginSchema = z.object({
   username: z.string(),
@@ -43,6 +44,7 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ className, ...props }) => {
   const router = useRouter();
   const queryClient = useQueryClient();
+  const { refreshUser } = useSession();
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -65,7 +67,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ className, ...props }) => {
       }
     },
     async onSuccess() {
-      await queryClient.invalidateQueries({ queryKey: ["user"] });
+      await queryClient.invalidateQueries({ queryKey: ["me"] });
+      await refreshUser();
       router.push("/");
     },
   });
