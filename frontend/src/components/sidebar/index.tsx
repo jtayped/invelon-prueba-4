@@ -13,6 +13,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { useSession } from "@/hooks/session";
 import UserInfo from "./user";
@@ -78,6 +79,7 @@ const groups: {
 
 const AppSidebar = () => {
   const { user } = useSession();
+  const { setOpenMobile } = useSidebar();
 
   const isAuthed = !!user;
   const isAdmin = !!user?.isAdmin;
@@ -103,7 +105,11 @@ const AppSidebar = () => {
                   {visible.map((item) => (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild>
-                        <Link href={item.url} className="flex items-center">
+                        <Link
+                          href={item.url}
+                          onClick={() => setOpenMobile(false)}
+                          className="flex items-center"
+                        >
                           <item.icon className="mr-2 h-4 w-4" />
                           <span>{item.title}</span>
                         </Link>

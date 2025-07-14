@@ -4,9 +4,11 @@ import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import { LogOut } from "lucide-react";
 import { Badge } from "../ui/badge";
+import { useSidebar } from "../ui/sidebar";
 
 const UserInfo = () => {
   const { user, logout } = useSession();
+  const { setOpenMobile } = useSidebar();
 
   if (!user) return;
 
@@ -25,7 +27,10 @@ const UserInfo = () => {
             variant={"ghost"}
             size={"icon"}
             className="cursor-pointer"
-            onClick={logout}
+            onClick={() => {
+              logout();
+              setOpenMobile(false);
+            }}
           >
             <LogOut />
           </Button>
