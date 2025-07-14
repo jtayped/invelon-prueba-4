@@ -26,6 +26,9 @@ import {
 } from "@/components/ui/form";
 import { registerUser } from "@/lib/auth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { AxiosError } from "axios";
 
 const registerSchema = z
   .object({
@@ -63,6 +66,8 @@ interface RegisterFormProps {
 }
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ className, ...props }) => {
+  const router = useRouter();
+
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -77,6 +82,17 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ className, ...props }) => {
     mutationFn: (data: RegisterFormValues) => {
       const { email, username, password } = data;
       return registerUser(username, email, password);
+    },
+    onSuccess() {
+      form.reset();
+      router.push("/login");
+    },
+    onError(error) {
+      if (error instanceof AxiosError && error.status === 400) {
+        form.setError("root", {
+          message: "A user with this email or username already exists.",
+        });
+      }
     },
   });
 
@@ -94,6 +110,16 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ className, ...props }) => {
           </CardDescription>
         </CardHeader>
         <CardContent>
+          {/* SHOW ROOT ERROR ALERT */}
+          {form.formState.errors.root && (
+            <Alert variant="destructive" className="mb-4">
+              <AlertTitle>Registration failed</AlertTitle>
+              <AlertDescription>
+                {form.formState.errors.root.message}
+              </AlertDescription>
+            </Alert>
+          )}
+
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <div className="flex flex-col gap-6">
@@ -114,6 +140,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ className, ...props }) => {
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name="username"
@@ -130,6 +157,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ className, ...props }) => {
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name="password"
@@ -147,6 +175,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ className, ...props }) => {
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name="confirmPassword"
@@ -160,6 +189,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ className, ...props }) => {
                     </FormItem>
                   )}
                 />
+
                 <Button
                   type="submit"
                   className="w-full"
@@ -170,6 +200,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ className, ...props }) => {
                     : "Create Account"}
                 </Button>
               </div>
+
               <div className="mt-4 text-center text-sm">
                 Already have an account?{" "}
                 <Link href="/login" className="underline underline-offset-4">

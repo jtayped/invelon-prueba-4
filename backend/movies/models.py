@@ -1,7 +1,7 @@
 from django.db import models
+from screens.models import Screen
 
 
-# Create your models here.
 class Movie(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField(blank=True)
@@ -15,13 +15,15 @@ class Movie(models.Model):
 
 class Session(models.Model):
     movie = models.ForeignKey(Movie, related_name="sessions", on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=6, decimal_places=2, default=9.99)
+    screen = models.ForeignKey(
+        Screen, related_name="sessions", on_delete=models.CASCADE
+    )
     starts_at = models.DateTimeField()
-    screen = models.PositiveSmallIntegerField()
-    seats_total = models.PositiveSmallIntegerField(default=100)
 
     class Meta:
         ordering = ["starts_at"]
         indexes = [models.Index(fields=["starts_at"])]
 
     def __str__(self):
-        return f"{self.movie} — {self.starts_at:%d %b %H:%M}"
+        return f"{self.movie.title} — {self.starts_at:%d %b %H:%M}"

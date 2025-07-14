@@ -1,20 +1,42 @@
-from django.shortcuts import render
+# tickets/views.py
+from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
+from backend.permissions import IsAdmin
 from .models import Ticket
 from .serializers import TicketSerializer
-from rest_framework import viewsets, permissions
 
 
-# Create your views here.
 class TicketViewSet(viewsets.ModelViewSet):
+    """
+    - GET /tickets/           → all tickets (admin only)
+    - GET /tickets/{pk}/      → retrieve any ticket (admin only)
+    - POST/PUT/DELETE /tickets/ → admin only
+    - GET /tickets/my/        → your tickets (any authenticated user)
+    """
+
+    queryset = Ticket.objects.select_related("session", "session__movie", "seat")
     serializer_class = TicketSerializer
-    permission_classes = [permissions.AllowAny]  # tighten later
+    permission_classes = [IsAdmin]  # default: only admins can use standard actions
 
-    def get_queryset(self):
-        return (
-            Ticket.objects.filter(user=self.request.user)
-            if self.request.user.is_authenticated
-            else Ticket.objects.none()
-        )
+    @action(
+        detail=False,
+        methods=["get"],
+        url_path="my",
+        permission_classes=[IsAuthenticated],  # override: any logged-in user
+    )
+    def my(self, request):
+        """
+        GET /tickets/my/
+        Return *all* tickets belonging to the current user.
+        """
+        qs = self.queryset.filter(user=request.user)
+        page = self.paginate_queryset(qs)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user, status=Ticket.Status.PURCHASED)
+        serializer = self.get_serializer(qs, many=True)
+        return Response(serializer.data)

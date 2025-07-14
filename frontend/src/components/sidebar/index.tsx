@@ -56,6 +56,20 @@ const groups: {
         authRequired: true,
         adminRequired: true,
       },
+      {
+        title: "Add Movie",
+        url: "/admin/movie/add",
+        icon: Settings,
+        authRequired: true,
+        adminRequired: true,
+      },
+      {
+        title: "Add Screen",
+        url: "/admin/screen/add",
+        icon: Settings,
+        authRequired: true,
+        adminRequired: true,
+      },
     ],
   },
 ];

@@ -7,7 +7,7 @@ const FunctionalLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
+      <main className="w-full p-6">
         <AppHeader />
         {children}
       </main>

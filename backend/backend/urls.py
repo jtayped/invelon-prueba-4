@@ -16,18 +16,19 @@ Including another URLconf
 """
 
 from rest_framework.routers import DefaultRouter
-from movies.views import MovieViewSet, SessionViewSet
+from movies.views import SessionViewSet
 from tickets.views import TicketViewSet
+from screens.views import ScreenViewSet
 from django.urls import path, include
 from django.contrib import admin
 
 router = DefaultRouter()
-router.register(r"movies", MovieViewSet, basename="movie")
-router.register(r"sessions", SessionViewSet, basename="session")
 router.register(r"tickets", TicketViewSet, basename="ticket")
+router.register(r"screens", ScreenViewSet, basename="screen")
 
 urlpatterns = [
     path("api/", include(router.urls)),
     path("api/auth/", include("users.urls")),
+    path("api/movies/", include("movies.urls")),
     path("admin/", admin.site.urls),
 ]

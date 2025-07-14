@@ -1,30 +1,29 @@
 from django.db import models
-
-# Create your models here.
 from django.conf import settings
-from movies.models import Session
+from movies.models import Session, Movie
+from screens.models import Seat
+from backend.settings import AUTH_USER_MODEL
 
 
 class Ticket(models.Model):
-    class Status(models.TextChoices):
-        RESERVED = "reserved"
-        PURCHASED = "purchased"
-
+    movie = models.ForeignKey(
+        Movie, related_name="movie", on_delete=models.CASCADE
+    )
     session = models.ForeignKey(
         Session, related_name="tickets", on_delete=models.CASCADE
     )
-    seat_number = models.CharField(max_length=5)  # “B-12”
+    seat = models.ForeignKey(Seat, related_name="tickets", on_delete=models.PROTECT)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL
-    )
-    status = models.CharField(
-        max_length=10, choices=Status.choices, default=Status.RESERVED
+        AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
     )
     price = models.DecimalField(max_digits=6, decimal_places=2, default=9.99)
     purchased_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ("session", "seat_number")  # no double-booking
+        unique_together = ("session", "seat")
 
     def __str__(self):
-        return f"{self.session} — {self.seat_number}"
+        return f"{self.session} — {self.seat.label}"

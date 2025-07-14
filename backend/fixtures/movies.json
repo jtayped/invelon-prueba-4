@@ -1,0 +1,79 @@
+[
+  {
+    "model": "movies.movie",
+    "pk": 1,
+    "fields": {
+      "title": "The Matrix",
+      "description": "A hacker discovers reality is a simulation.",
+      "duration_min": 136,
+      "rating": "R",
+      "active": true
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 2,
+    "fields": {
+      "title": "Spirited Away",
+      "description": "A young girl navigates a world of spirits.",
+      "duration_min": 125,
+      "rating": "PG",
+      "active": true
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 3,
+    "fields": {
+      "title": "The Godfather",
+      "description": "The aging patriarch of an organized crime dynasty transfers control to his reluctant son.",
+      "duration_min": 175,
+      "rating": "R",
+      "active": true
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 4,
+    "fields": {
+      "title": "Inception",
+      "description": "A thief enters people’s dreams to steal secrets.",
+      "duration_min": 148,
+      "rating": "PG-13",
+      "active": true
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 5,
+    "fields": {
+      "title": "Toy Story",
+      "description": "Toys come to life when humans aren’t around.",
+      "duration_min": 81,
+      "rating": "G",
+      "active": true
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 6,
+    "fields": {
+      "title": "Titanic",
+      "description": "A young couple meets on the ill-fated RMS Titanic.",
+      "duration_min": 195,
+      "rating": "PG-13",
+      "active": true
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 7,
+    "fields": {
+      "title": "Parasite",
+      "description": "A poor family schemes to become employed by a wealthy household.",
+      "duration_min": 132,
+      "rating": "R",
+      "active": true
+    }
+  }
+]

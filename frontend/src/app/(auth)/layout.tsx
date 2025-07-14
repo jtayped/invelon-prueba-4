@@ -1,4 +1,3 @@
-import LoginForm from "@/components/auth/login";
 import React from "react";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {

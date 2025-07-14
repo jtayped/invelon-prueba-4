@@ -1,0 +1,122 @@
+[
+  {
+    "model": "movies.session",
+    "pk": 1,
+    "fields": {
+      "movie": 1,
+      "price": "9.99",
+      "screen": 1,
+      "starts_at": "2025-08-01T19:30:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 2,
+    "fields": {
+      "movie": 2,
+      "price": "11.50",
+      "screen": 2,
+      "starts_at": "2025-08-01T21:00:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 3,
+    "fields": {
+      "movie": 3,
+      "price": "12.00",
+      "screen": 1,
+      "starts_at": "2025-08-02T20:00:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 4,
+    "fields": {
+      "movie": 3,
+      "price": "12.00",
+      "screen": 2,
+      "starts_at": "2025-08-03T19:00:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 5,
+    "fields": {
+      "movie": 4,
+      "price": "10.00",
+      "screen": 2,
+      "starts_at": "2025-08-02T22:00:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 6,
+    "fields": {
+      "movie": 4,
+      "price": "10.00",
+      "screen": 1,
+      "starts_at": "2025-08-03T21:30:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 7,
+    "fields": {
+      "movie": 5,
+      "price": "8.50",
+      "screen": 1,
+      "starts_at": "2025-08-03T17:00:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 8,
+    "fields": {
+      "movie": 5,
+      "price": "8.50",
+      "screen": 2,
+      "starts_at": "2025-08-04T16:30:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 9,
+    "fields": {
+      "movie": 6,
+      "price": "11.00",
+      "screen": 2,
+      "starts_at": "2025-08-03T19:30:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 10,
+    "fields": {
+      "movie": 6,
+      "price": "11.00",
+      "screen": 1,
+      "starts_at": "2025-08-04T18:00:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 11,
+    "fields": {
+      "movie": 7,
+      "price": "10.50",
+      "screen": 1,
+      "starts_at": "2025-08-04T20:00:00Z"
+    }
+  },
+  {
+    "model": "movies.session",
+    "pk": 12,
+    "fields": {
+      "movie": 7,
+      "price": "10.50",
+      "screen": 2,
+      "starts_at": "2025-08-05T21:00:00Z"
+    }
+  }
+]

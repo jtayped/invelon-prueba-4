@@ -3,7 +3,7 @@ import { SidebarTrigger } from "../ui/sidebar";
 
 const AppHeader = () => {
   return (
-    <div className="py-4">
+    <div className="pb-4">
       <SidebarTrigger />
     </div>
   );
